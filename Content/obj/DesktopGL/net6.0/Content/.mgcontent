@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/backgroundMap.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/backgroundMenu.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/continue1.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/continue2.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/earth.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/GoLeft.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/goRight.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/play1.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/play2.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/quit1.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/quit2.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>goLeft.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
