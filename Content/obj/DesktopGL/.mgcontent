@@ -6,17 +6,37 @@
   <SourceFiles>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/backgroundMap.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/backgroundMenu.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/centreEarthBigTile.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/centreEarthTile.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/coin.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/continue1.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/continue2.png</File>
-    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/earthBrick.png</File>
-    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/goLeft.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/earth.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/File.spritefont</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/GoLeft.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/goRight.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/key.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/leftEarthBigTile.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/leftEarthTile.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/money (1).png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/play1.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/play2.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/quit1.png</File>
     <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/quit2.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/rightEarthBigTile.png</File>
+    <File>C:/Users/Admin/Desktop/Программирование на C#/CSGameProject/CSGameProject/Content/rightEarthTile.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>goLeft.png</File>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

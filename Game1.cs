@@ -15,6 +15,7 @@ namespace CSGameProject
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private static bool flag;
 
         State State = State.Menu;
         Map map;
@@ -24,7 +25,6 @@ namespace CSGameProject
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
         }
 
         protected override void Initialize()
@@ -37,6 +37,7 @@ namespace CSGameProject
             map = new Map(this);
             menu.Initialize(this, _graphics);
             map.Initialize(this, _graphics);
+            flag = true;
 
             base.Initialize();
         }
@@ -45,8 +46,8 @@ namespace CSGameProject
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            menu.LoadContent(_graphics);
-            map.LoadContent(_graphics);
+            menu.Load(_graphics);
+            map.Load(_graphics);
         }
 
         protected override void Update(GameTime gameTime)
@@ -55,12 +56,19 @@ namespace CSGameProject
             switch (State)
             {
                 case State.Menu:
-                    menu.Update(gameTime);
-                    if (mouse.LeftButton == ButtonState.Pressed && MenuButtons.IsBoundButtonPlay(mouse)) State = State.Game;
+                    menu.Update(gameTime, _graphics);
+                    if (mouse.LeftButton == ButtonState.Pressed && MenuButtons.IsBoundButtonPlay(mouse) && !Treasures.IsExit && flag)
+                    {
+                        State = State.Game;
+                        flag = false;
+                    }
+                    if (mouse.LeftButton == ButtonState.Pressed && MenuButtons.IsBoundButtonContinue(mouse) && !Treasures.IsExit && !flag)
+                        State = State.Game;
                     break;
                 case State.Game:
-                    map.Update(gameTime);
-                    if (Keyboard.GetState().IsKeyDown(Keys.Escape)) State = State.Menu;
+                    map.Update(gameTime, _graphics);
+                    if (Keyboard.GetState().IsKeyDown(Keys.Escape) || Treasures.IsExit)
+                        State = State.Menu;
                     break;
             }
             
@@ -83,10 +91,10 @@ namespace CSGameProject
             switch (State)
             {
                 case State.Menu:
-                    menu.Draw(_spriteBatch, _graphics);
+                    menu.Draw(_spriteBatch, _graphics, gameTime);
                     break;
                 case State.Game:
-                    map.Draw(_spriteBatch, _graphics);
+                    map.Draw(_spriteBatch, _graphics, gameTime);
                     break;
             }
 

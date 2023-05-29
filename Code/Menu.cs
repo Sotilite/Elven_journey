@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CSGameProject.Code
 {
-    public class Menu : GamePosition
+    public class Menu : GameState
     {
         public static Texture2D background { get; set; }
 
@@ -20,18 +20,18 @@ namespace CSGameProject.Code
             MenuButtons.Initialize(game, graphics);
         }
 
-        public override void LoadContent(GraphicsDeviceManager graphics)
+        public override void Load(GraphicsDeviceManager graphics)
         {
             background = content.Load<Texture2D>("backgroundMenu");
             MenuButtons.LoadContent();
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             MenuButtons.Update();
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics, GameTime gameTime)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 1000, 650), Color.White);
             MenuButtons.Draw(spriteBatch, graphics);

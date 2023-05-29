@@ -2,22 +2,24 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 
 namespace CSGameProject.Code
 {
-    class Map : GamePosition
+    class Map : GameState
     {
-        private static Texture2D background { get; set; }
         public static Texture2D earth;
         public static Texture2D LeftIsland;
+        public static Texture2D LeftEarthBigTile;
+        public static Texture2D RightEarthBigTile;
         public static Texture2D player;
-        public static List<Rectangle> LandBoundary;
-        private static Vector2 earthPos;
         public static Vector2 IslandPos;
+        public static Dictionary<Rectangle, bool> LandBoundary;
+        public static Vector2 earthPos;
+        private static Texture2D background { get; set; }
+        private static Texture2D textureScore;
+        private static Vector2 scorePos;
         private static List<Player> sprites;
-
 
         public Map(Game game) : base(game)
         {
@@ -29,15 +31,23 @@ namespace CSGameProject.Code
             var map = new Map(game);
             earthPos = new Vector2(0, graphics.PreferredBackBufferHeight);
             IslandPos = new Vector2(0, graphics.PreferredBackBufferHeight);
-            LandBoundary = new List<Rectangle>();
+            LandBoundary = new Dictionary<Rectangle, bool>();
+            scorePos = new Vector2(5, 5);
+            Treasures.Initialize(graphics);
+            Ghost.Initialize(graphics);
         }
 
-        public override void LoadContent(GraphicsDeviceManager graphics)
+        public override void Load(GraphicsDeviceManager graphics)
         {
             background = content.Load<Texture2D>("backgroundMap");
             earth = content.Load<Texture2D>("earth");
             LeftIsland = content.Load<Texture2D>("earth");
             player = content.Load<Texture2D>("goRight");
+            LeftEarthBigTile = content.Load<Texture2D>("leftEarthBigTile");
+            RightEarthBigTile = content.Load<Texture2D>("rightEarthBigTile");
+            textureScore = content.Load<Texture2D>("scoreBlack");
+            Treasures.Load(content);
+            Ghost.Load(content);
 
             var animations = new Dictionary<string, Animation>()
             {
@@ -57,15 +67,21 @@ namespace CSGameProject.Code
                     }
                 }
             };
+
+            var key1 = new Rectangle((int)IslandPos.X - player.Width / 30 * 2, (int)IslandPos.Y - 200, LeftEarthBigTile.Width, LeftEarthBigTile.Height);
+            LandBoundary.Add(key1, false);
+            var key2 = new Rectangle(graphics.PreferredBackBufferWidth - RightEarthBigTile.Width - player.Width / 25 * 3, (int)IslandPos.Y - 200,
+                RightEarthBigTile.Width, RightEarthBigTile.Height);
+            LandBoundary.Add(key2, false);
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, GraphicsDeviceManager graphics)
         {
             foreach (var sprite in sprites)
-                sprite.Update(gameTime, sprites);
+                sprite.Update(gameTime, sprites, graphics, sprite.Position);
         }
 
-        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics)
+        public override void Draw(SpriteBatch spriteBatch, GraphicsDeviceManager graphics, GameTime gameTime)
         {
             spriteBatch.Draw(background, new Rectangle(0, 0, 900, 500), Color.White);
 
@@ -75,19 +91,18 @@ namespace CSGameProject.Code
                     earthPos.Y - earth.Height), Color.White);
             }
 
-            for (var i = 0; i < 4; i++)
-                spriteBatch.Draw(earth, new Vector2(IslandPos.X + LeftIsland.Width * i, IslandPos.Y - 175), Color.White);
-            for (var i = 0; i < 5; i++)
-                spriteBatch.Draw(earth, new Vector2(IslandPos.X + 350 + LeftIsland.Width * i, IslandPos.Y - 225), Color.White);
-            for (var i = 0; i < graphics.PreferredBackBufferWidth / earth.Width + 1; i++)
-                spriteBatch.Draw(earth, new Vector2(IslandPos.X + graphics.PreferredBackBufferWidth / 2 + LeftIsland.Width * i, IslandPos.Y - 350), Color.White);
-            for (var i = 0; i < 4; i++)
-                spriteBatch.Draw(earth, new Vector2(IslandPos.X + 730 + LeftIsland.Width * i, IslandPos.Y - 200), Color.White);
+            //spriteBatch.Draw(textureScore, scorePos, Color.White);
 
-            LandBoundary.Add(new Rectangle((int)earthPos.X * 3, (int)earthPos.Y - 175, earth.Width / 2 * 5, earth.Height / 2));
+            Treasures.Draw(spriteBatch);
+
+            var ghost = new Ghost();
+            ghost.Draw(spriteBatch, gameTime);
+
+            spriteBatch.Draw(LeftEarthBigTile, new Vector2(IslandPos.X, IslandPos.Y - 200), Color.White);
+            spriteBatch.Draw(RightEarthBigTile, new Vector2(graphics.PreferredBackBufferWidth - RightEarthBigTile.Width, IslandPos.Y - 200), Color.White);
 
             foreach (var sprite in sprites)
-                sprite.Draw(spriteBatch);
+                sprite.Draw(spriteBatch, gameTime);
         }
     }
 }

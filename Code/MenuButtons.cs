@@ -124,7 +124,7 @@ namespace CSGameProject.Code
                 SpriteEffects.None, 0f);
         }
 
-        public static void LoadContent()
+        public new static void LoadContent()
         {
             playButton[0] = content.Load<Texture2D>("play1");
             playButton[1] = content.Load<Texture2D>("play2");
